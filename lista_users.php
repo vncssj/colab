@@ -2,8 +2,9 @@
 require 'conexao.php';
 
 $sql = "SELECT * FROM usuarios";
-$usuarios = $conn->exec($sql);
+$usuarios = $conn->query($sql);
 $usuarios = $usuarios->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -21,10 +22,10 @@ $usuarios = $usuarios->fetchAll(PDO::FETCH_ASSOC);
             <td>nome</td>
             <td>login</td>
         </tr>
-        <?php foreach ($usuarios as $user) : ?>
+        <?php foreach ($usuarios as $user) :?>
             <tr>
-                <td><?= $user->nome ?></td>
-                <td><?= $user->login ?></td>
+                <td><?= $user ['nome'] ?></td>
+                <td><?= $user ['login'] ?></td>
             </tr>
         <?php endforeach; ?>
     </table>
